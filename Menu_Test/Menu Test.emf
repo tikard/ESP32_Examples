@@ -1,0 +1,378 @@
+{
+  "lastEdited": {
+    "seconds": 1611370844,
+    "nanos": 0
+  },
+  "codeOptions": {
+    "applicationUUID": "201efad0-f2b7-4c8f-a7ad-a27aa5b60ea5",
+    "applicationName": "Riverbend Wells",
+    "lastInputUuid": "6dd87e7d-e751-4912-a70d-91793b1d3d87",
+    "lastDisplayUuid": "d4c84106-fa87-4024-b91e-053e17a52b8f",
+    "lastRemoteUuid": "2c101fec-1f7d-4ff3-8d2b-992ad41e7fcb",
+    "embeddedPlatform": "ARDUINO_UNO",
+    "namingRecursive": false,
+    "saveToSrc": false,
+    "useCppMain": false,
+    "lastProperties": [
+      {
+        "name": "PULLUP_LOGIC",
+        "latestValue": "true",
+        "subsystem": "INPUT"
+      },
+      {
+        "name": "INTERRUPT_SWITCHES",
+        "latestValue": "false",
+        "subsystem": "INPUT"
+      },
+      {
+        "name": "SWITCH_IODEVICE",
+        "latestValue": "",
+        "subsystem": "INPUT"
+      },
+      {
+        "name": "ENCODER_PIN_A",
+        "latestValue": "2",
+        "subsystem": "INPUT"
+      },
+      {
+        "name": "ENCODER_PIN_B",
+        "latestValue": "3",
+        "subsystem": "INPUT"
+      },
+      {
+        "name": "ENCODER_PIN_OK",
+        "latestValue": "8",
+        "subsystem": "INPUT"
+      },
+      {
+        "name": "LCD_WIDTH",
+        "latestValue": "20",
+        "subsystem": "DISPLAY"
+      },
+      {
+        "name": "LCD_HEIGHT",
+        "latestValue": "4",
+        "subsystem": "DISPLAY"
+      },
+      {
+        "name": "I2C_ADDRESS",
+        "latestValue": "0x27",
+        "subsystem": "DISPLAY"
+      },
+      {
+        "name": "PIN_LAYOUT",
+        "latestValue": "RS_RW_EN",
+        "subsystem": "DISPLAY"
+      },
+      {
+        "name": "WIRE_VARIABLE",
+        "latestValue": "Wire",
+        "subsystem": "DISPLAY"
+      }
+    ]
+  },
+  "projectName": "Control Wells and Pump",
+  "namingRecursive": false,
+  "version": "1.0",
+  "items": [
+    {
+      "parentId": 0,
+      "type": "enumItem",
+      "item": {
+        "name": "Mode",
+        "eepromAddress": -1,
+        "id": 29,
+        "readOnly": true,
+        "localOnly": false,
+        "visible": true,
+        "enumEntries": [
+          "IDLE",
+          "START",
+          "READY",
+          "FILLING",
+          "STOPPED",
+          "FAULT"
+        ]
+      }
+    },
+    {
+      "parentId": 0,
+      "type": "subMenu",
+      "item": {
+        "name": "Generator",
+        "eepromAddress": -1,
+        "id": 1,
+        "readOnly": false,
+        "localOnly": false,
+        "visible": true,
+        "functionName": "onGeneratorChanged",
+        "secured": false
+      }
+    },
+    {
+      "parentId": 1,
+      "type": "boolItem",
+      "item": {
+        "name": "Running",
+        "eepromAddress": -1,
+        "id": 23,
+        "readOnly": false,
+        "localOnly": false,
+        "visible": true,
+        "functionName": "onGeneratorRunningChanged",
+        "naming": "ON_OFF"
+      }
+    },
+    {
+      "parentId": 1,
+      "type": "actionMenu",
+      "item": {
+        "name": "Start",
+        "eepromAddress": -1,
+        "id": 13,
+        "readOnly": false,
+        "localOnly": false,
+        "visible": true,
+        "functionName": "onGeneratorStart"
+      }
+    },
+    {
+      "parentId": 1,
+      "type": "actionMenu",
+      "item": {
+        "name": "Stop",
+        "eepromAddress": -1,
+        "id": 14,
+        "readOnly": false,
+        "localOnly": false,
+        "visible": true,
+        "functionName": "onGeneratorStop"
+      }
+    },
+    {
+      "parentId": 1,
+      "type": "analogItem",
+      "item": {
+        "name": "Start Time",
+        "eepromAddress": -1,
+        "id": 15,
+        "readOnly": false,
+        "localOnly": false,
+        "visible": true,
+        "functionName": "onStartTimeChanged",
+        "maxValue": 8,
+        "offset": 2,
+        "divisor": 0,
+        "unitName": " S."
+      }
+    },
+    {
+      "parentId": 1,
+      "type": "analogItem",
+      "item": {
+        "name": "Retrys",
+        "eepromAddress": -1,
+        "id": 16,
+        "readOnly": false,
+        "localOnly": false,
+        "visible": true,
+        "functionName": "onRetrysChanged",
+        "maxValue": 5,
+        "offset": 2,
+        "divisor": 0,
+        "unitName": ""
+      }
+    },
+    {
+      "parentId": 0,
+      "type": "subMenu",
+      "item": {
+        "name": "Status",
+        "eepromAddress": -1,
+        "id": 3,
+        "readOnly": false,
+        "localOnly": false,
+        "visible": true,
+        "functionName": "onStatusChanged",
+        "secured": false
+      }
+    },
+    {
+      "parentId": 3,
+      "type": "boolItem",
+      "item": {
+        "name": "Storage Full",
+        "eepromAddress": -1,
+        "id": 18,
+        "readOnly": false,
+        "localOnly": false,
+        "visible": true,
+        "functionName": "onStorageFullChanged",
+        "naming": "ON_OFF"
+      }
+    },
+    {
+      "parentId": 3,
+      "type": "boolItem",
+      "item": {
+        "name": "Storage Empty",
+        "eepromAddress": -1,
+        "id": 17,
+        "readOnly": false,
+        "localOnly": false,
+        "visible": true,
+        "functionName": "storageEmptyChanged",
+        "naming": "ON_OFF"
+      }
+    },
+    {
+      "parentId": 3,
+      "type": "boolItem",
+      "item": {
+        "name": "Tank Full",
+        "eepromAddress": -1,
+        "id": 19,
+        "readOnly": true,
+        "localOnly": false,
+        "visible": true,
+        "naming": "ON_OFF"
+      }
+    },
+    {
+      "parentId": 3,
+      "type": "floatItem",
+      "item": {
+        "name": "Battery",
+        "eepromAddress": -1,
+        "id": 22,
+        "readOnly": true,
+        "localOnly": false,
+        "visible": true,
+        "numDecimalPlaces": 2
+      }
+    },
+    {
+      "parentId": 3,
+      "type": "boolItem",
+      "item": {
+        "name": "Fuel Low",
+        "eepromAddress": -1,
+        "id": 21,
+        "readOnly": true,
+        "localOnly": false,
+        "visible": true,
+        "naming": "TRUE_FALSE"
+      }
+    },
+    {
+      "parentId": 0,
+      "type": "subMenu",
+      "item": {
+        "name": "Self Tests",
+        "eepromAddress": -1,
+        "id": 11,
+        "readOnly": false,
+        "localOnly": false,
+        "visible": true,
+        "functionName": "onSelftestChanged",
+        "secured": false
+      }
+    },
+    {
+      "parentId": 11,
+      "type": "actionMenu",
+      "item": {
+        "name": "Test Pump Relay",
+        "eepromAddress": -1,
+        "id": 12,
+        "readOnly": false,
+        "localOnly": false,
+        "visible": true,
+        "functionName": "onPumpRelayChanged"
+      }
+    },
+    {
+      "parentId": 11,
+      "type": "actionMenu",
+      "item": {
+        "name": "Send Sat Msg",
+        "eepromAddress": -1,
+        "id": 24,
+        "readOnly": false,
+        "localOnly": false,
+        "visible": true,
+        "functionName": "onSatMsgChanged"
+      }
+    },
+    {
+      "parentId": 11,
+      "type": "actionMenu",
+      "item": {
+        "name": "Backlight on/off",
+        "eepromAddress": -1,
+        "id": 28,
+        "readOnly": false,
+        "localOnly": false,
+        "visible": true,
+        "functionName": "onBacklighChanged"
+      }
+    },
+    {
+      "parentId": 11,
+      "type": "actionMenu",
+      "item": {
+        "name": "DisableIO",
+        "eepromAddress": -1,
+        "id": 30,
+        "readOnly": false,
+        "localOnly": false,
+        "visible": true,
+        "functionName": "ondisableIOChanged"
+      }
+    },
+    {
+      "parentId": 0,
+      "type": "subMenu",
+      "item": {
+        "name": "Set Date/Time",
+        "eepromAddress": -1,
+        "id": 27,
+        "readOnly": false,
+        "localOnly": false,
+        "visible": true,
+        "functionName": "onSetDatetimeChanged",
+        "secured": false
+      }
+    },
+    {
+      "parentId": 27,
+      "type": "textItem",
+      "item": {
+        "name": "Date",
+        "eepromAddress": -1,
+        "id": 25,
+        "readOnly": false,
+        "localOnly": false,
+        "visible": true,
+        "functionName": "onDateChanged",
+        "itemType": "GREGORIAN_DATE",
+        "textLength": 5
+      }
+    },
+    {
+      "parentId": 27,
+      "type": "textItem",
+      "item": {
+        "name": "Time",
+        "eepromAddress": -1,
+        "id": 26,
+        "readOnly": false,
+        "localOnly": false,
+        "visible": true,
+        "functionName": "onTimeChanged",
+        "itemType": "TIME_24H",
+        "textLength": 5
+      }
+    }
+  ]
+}
