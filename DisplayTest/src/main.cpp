@@ -34,17 +34,8 @@
 
  // Include the correct display library
  // For a connection via I2C using Wire include
- #include <Wire.h>  // Only needed for Arduino 1.6.5 and earlier
- #include <SSD1306Wire.h> // legacy include: `#include "SSD1306.h"`
- // or #include "SH1106Wire.h", legacy include: `#include "SH1106.h"`
- // For a connection via I2C using brzo_i2c (must be installed) include
- // #include <brzo_i2c.h> // Only needed for Arduino 1.6.5 and earlier
- // #include "SSD1306Brzo.h"
- // #include "SH1106Brzo.h"
- // For a connection via SPI include
- // #include <SPI.h> // Only needed for Arduino 1.6.5 and earlier
- // #include "SSD1306Spi.h"
- // #include "SH1106SPi.h"
+#include <Wire.h>  // Only needed for Arduino 1.6.5 and earlier
+#include <SSD1306Wire.h> // legacy include: `#include "SSD1306.h"`
 
 //#include <OLEDDisplay.h>
 
@@ -67,7 +58,6 @@
 SSD1306Wire  display(0x3c, I2C_SDA, I2C_SCL);
 //SSD1306Wire  display(0x3c, MY_OLED_SDA, MY_OLED_SCL);
 
-//SH1106Wire display(0x3c, D3, D5);
 
 OLEDDisplayUi ui     ( &display );
 
